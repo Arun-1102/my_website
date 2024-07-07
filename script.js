@@ -1,90 +1,52 @@
-$(document).ready(function () {
-    $(window).scroll(function () {
-      //  sticky navbar on scroll script  //
-      if (this.scrollY > 20) {
-        $(".navbar").addClass("sticky");
-      } else {
-        $(".navbar").removeClass("sticky");
-      }
-  
-      //  scroll-up button show/hide script  //
-      if (this.scrollY > 500) {
-        $(".scroll-up-btn").addClass("show");
-      } else {
-        $(".scroll-up-btn").removeClass("show");
-      }
-    });
-  
-    //  slide-up script  //
-  
-    $(".scroll-up-btn").click(function () {
-      $("html").animate({ scrollTop: 0 });
-      //  removing smooth scroll on slide-up button click  //
-      $("html").css("scrollBehavior", "auto");
-    });
-  
-    $(".navbar .menu li a").click(function () {
-      //  Smooth scroll on Menu Items click  //
-  
-      $("html").css("scrollBehavior", "smooth");
-    });
-  
-    //  Toggle Navbar  //
-  
-    $(".menu-btn").click(function () {
-      $(".navbar .menu").toggleClass("active");
-      $(".menu-btn i").toggleClass("active");
-    });
-  
-    //  Typing Text Animation  //
-  
-    var typed = new Typed(".typing", {
-      strings: [
-        "Fullstack Developer",
-        "Software Developer",
-        "Python Developer",
-        "Founder",
-        "Author"
-      ],
-      typeSpeed: 100,
-      backSpeed: 60,
-      loop: true
-    });
-  
-    var typed = new Typed(".typing-2", {
-      strings: [
-        "Fullstack Developer",
-        "Software Developer",
-        "Python Developer",
-        "Founder",
-        "Author"
-      ],
-      typeSpeed: 100,
-      backSpeed: 60,
-      loop: true
-    });
-  
-    //  Owl Carousel  //
-  
-    $(".carousel").owlCarousel({
-      margin: 20,
-      loop: true,
-      autoplay: true,
-      autoplayTimeOut: 2000,
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1,
-          nav: false
-        },
-        600: {
-          items: 2,
-          nav: false
-        },
-        1000: {
-          items: 3,
-          nav: false
+let menuIcon=document.querySelector('#menu-icon');
+let navbar=document.querySelector('.navbar');
+
+menuIcon.onclick =()=>{
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+
+let sections=document.querySelectorAll('section');
+let navlinks=document.querySelectorAll('header nav a');
+
+window.onscroll=()=>{
+    sections.forEach(sec =>{
+        let top=window.scrollY;
+        let offset=sec.offsetTop-150;
+        let height=sec.offsetHeight;
+        let id=sec.getAttribute('id');
+
+        if(top >= offset && top < offset + height){
+            navlinks.forEach(links=>{
+                links.classList.remove('active');
+                    document.querySelector ('header nav a[href*='+ id +']').classList.add('active');
+
+            })
         }
-      }
-    });
-  });
+    })
+    let header=document.querySelector('header');
+    header.classList.toggle('sticky',window.scrollY>100);
+
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+}
+
+ScrollReveal({ 
+    /*reset: true,*/
+    distance:'80px',
+    duration:2000,
+    delay:200 
+});
+
+ScrollReveal().reveal('.home-content, .heading', { origin:'top' });
+ScrollReveal().reveal('.home-img, .service-container, .portfolio-box, .contact form', { origin:'bottom' });
+ScrollReveal().reveal('.home-content h1, .about-img', { origin:'left' });
+ScrollReveal().reveal('.home-content p, .about-content', { origin:'right' });
+
+const typed=new Typed('.multiple-text',{
+    strings:['Full-Stack Developer','React-Developer','3D Modeling'],
+    typeSpeed:100,
+    backSpeed:100,
+    backDelay:1000,
+    loop:true
+})
