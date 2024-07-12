@@ -10,7 +10,7 @@
 }
 :root {
   --bg-color: rgba(246, 249, 248, 0.995);
-  --second-bg-color: hwb(252 97% 1%);
+  --second-bg-color: rgb(86, 85, 88);
   --text-color: #ea0e0e;
   --main-color: hsl(60, 8%, 5%);
   border-color: #ea0e0e;
