@@ -9,11 +9,11 @@
   font-family: "poppins", sans-serif;
 }
 :root {
-  --bg-color: hwb(144 96% 2%);
-  --second-bg-color: #f8f6fc;
-  --text-color: hsl(195, 95%, 50%);
-  --main-color: hwb(75 3% 4%);
-  border-color: #f704f7;
+  --bg-color: rgb(234, 234, 234);
+  --second-bg-color: rgb(231, 229, 235);
+  --text-color: #020202;
+  --main-color: rgb(251, 4, 255);
+  border-color: rgb(232, 43, 229);
 }
 
 html {
